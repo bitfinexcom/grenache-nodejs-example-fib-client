@@ -1,6 +1,7 @@
 'use strict'
 
-const { Link, PeerRPCClient }  = require('grenache-nodejs-ws')
+const { PeerRPCClient }  = require('grenache-nodejs-ws')
+const Link = require('grenache-nodejs-link')
 
 const link = new Link({
   grape: 'http://127.0.0.1:30001',
