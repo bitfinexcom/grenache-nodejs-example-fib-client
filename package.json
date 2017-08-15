@@ -1,6 +1,6 @@
 {
   "name": "grenache-nodejs-example-fib-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Grenache Node.js Example Client",
   "main": "client.js",
   "scripts": {
