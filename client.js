@@ -1,25 +1,24 @@
 'use strict'
 
-const { Link, PeerRPCClient }  = require('grenache-nodejs-ws')
+const { PeerRPCClient }  = require('grenache-nodejs-ws')
+const Link = require('grenache-nodejs-link')
 
 const link = new Link({
-  grape: 'ws://127.0.0.1:30001'
+  grape: 'http://127.0.0.1:30001',
+  requestTimeout: 10000
 })
 link.start()
 
 const peer = new PeerRPCClient(link, {})
 peer.init()
 
-link.on('connect', () => {
-  const payload = { number: 10 }
-
-  peer.request('fibonacci_worker', payload, { timeout: 10000 }, (err, result) => {
-    if (err) throw err
-    console.log(
-      'Fibonacci number at place',
-      payload.number,
-      'in the sequence:',
-      result
-    )
-  })
+const payload = { number: 10 }
+peer.request('fibonacci_worker', payload, { timeout: 100000 }, (err, result) => {
+  if (err) throw err
+  console.log(
+    'Fibonacci number at place',
+    payload.number,
+    'in the sequence:',
+    result
+  )
 })
